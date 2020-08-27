@@ -5,7 +5,6 @@
     :style="[{'background-color':colorValue},colorInputValue=='' ? { 'bakcground-color': colorValue } : { 'background-color': colorInputValue }]"
   >
     <div id="colorCode">{{colorInputValue==""? colorValue:colorInputValue}}</div>
-    <!-- <img id="editIcon" src="../assets/ui-edit.svg" alt="Edit" width="20" /> -->
     <input
       id="colorSel"
       type="color"
@@ -31,16 +30,6 @@ export default {
   methods: {
     changeColor() {
       this.$emit("changeColor", this.id, this.colorInputValue);
-      // console.log(
-      //   "rgb(" +
-      //     this.colorInputValue
-      //       .match(/[A-Za-z0-9]{2}/g)
-      //       .map(function (v) {
-      //         return parseInt(v, 16);
-      //       })
-      //       .join(",") +
-      //     ")"
-      // );
     },
   },
 };

@@ -11,12 +11,7 @@
           v-model="colorName"
         />
       </div>
-      <select
-        name="langSel"
-        id="langSel"
-        title="language options"
-        v-model="selectedLang"
-      >
+      <select name="langSel" id="langSel" title="language options" v-model="selectedLang">
         <option value selected>Language</option>
         <option value="css">CSS</option>
         <option value="Less">less</option>
@@ -24,13 +19,7 @@
         <option value="js">JS</option>
         <option value="plain">Plain Text</option>
       </select>
-      <button
-        id="copyWithLang"
-        @click="copyWithLang"
-        title="copy with language syntax"
-      >
-        Copy
-      </button>
+      <button id="copyWithLang" @click="copyWithLang" title="copy with language syntax">Copy</button>
       <button id="downloadAsFile" @click="createPDF">Download</button>
     </form>
     <div id="heart" title="like">
@@ -115,13 +104,7 @@
         <g />
       </svg>
     </div>
-    <button
-      id="ranButton"
-      title="Generate random palettes"
-      @click="randomColor"
-    >
-      Random Generate
-    </button>
+    <button id="ranButton" title="Generate random palettes" @click="randomColor">Random Generate</button>
   </div>
 </template>
 
@@ -141,7 +124,7 @@ export default {
       this.$emit("copyColorCodes");
     },
     randomColor() {
-      var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+      var randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
       this.$emit("randomColor", randomColor);
     },
     createPDF() {

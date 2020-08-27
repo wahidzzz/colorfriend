@@ -9,13 +9,14 @@
     <bottomNav
       @copyColorCodes="copyPalette"
       :colorValues="colorValues"
-      @randomColor="randomColor"
+      @randomColor="setColorValues"
     />
   </div>
 </template>
 
 <script>
 import Vue from "vue";
+import convert from "color-convert";
 import headerNav from "./components/headerNav";
 import mainBody from "./components/mainBody";
 import bottomNav from "./components/bottomNav";
@@ -33,21 +34,33 @@ export default {
   data() {
     return {
       colorValues: [],
+      randomColorVal: "#" + Math.floor(Math.random() * 16777215).toString(16),
     };
   },
   methods: {
-    setColorValues(colorValue) {
-      if (colorValue.length == 0) {
-        this.colorValues = [
-          "#ffeded",
-          "#000000",
-          "#eeeeee",
-          "#111111",
-          "#efefef",
-          "#ff0000",
-        ];
+    setColorValues(randomColor) {
+      if (this.colorValues.length == 0 && this.randomColorVal != "") {
+        var genRandomColor = Math.floor(Math.random() * 16777215).toString(16);
+        this.colorValues[0] = "#" + genRandomColor;
+        this.colorValues[1] =
+          "#" +
+          convert.hsl.hex(
+            convert.hex.hsl(genRandomColor)[0] + 200,
+            convert.hex.hsl(genRandomColor)[1],
+            convert.hex.hsl(genRandomColor)[2]
+          );
+        // console.log(convert.hex.hsl(genRandomColor));
+      } else if (
+        (this.colorValues.length != 0 || this.colorValues.length < 0) &&
+        randomColor != ""
+      ) {
+        this.colorValues = [];
+        for (let index = 0; index < 7; index++) {
+          this.colorValues[index] =
+            "#" + Math.floor(Math.random() * 16777215).toString(16);
+        }
       } else {
-        this.colorValues = colorValue;
+        console.log("hell");
       }
     },
     changeColor(id, colorInputValue) {
@@ -63,13 +76,9 @@ export default {
         duration: 3000,
       });
     },
-    randomColor(randomColor) {
-      this.colorValues[0] = "#" + randomColor;
-      this.setColorValues(this.colorValues);
-    },
   },
   created() {
-    this.setColorValues(this.colorValues);
+    this.setColorValues(this.randomColorVal);
   },
 };
 </script>
