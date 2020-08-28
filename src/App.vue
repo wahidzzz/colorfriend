@@ -1,11 +1,7 @@
 <template>
   <div id="app">
     <headerNav />
-    <mainBody
-      :colorValues="colorValues"
-      @changeColor="changeColor"
-      v-model="colorValues"
-    />
+    <mainBody :colorValues="colorValues" @changeColor="changeColor" v-model="colorValues" />
     <bottomNav
       @copyColorCodes="copyPalette"
       :colorValues="colorValues"
@@ -41,15 +37,30 @@ export default {
     setColorValues(randomColor) {
       if (this.colorValues.length == 0 && this.randomColorVal != "") {
         var genRandomColor = Math.floor(Math.random() * 16777215).toString(16);
+
         this.colorValues[0] = "#" + genRandomColor;
         this.colorValues[1] =
           "#" +
           convert.hsl.hex(
-            convert.hex.hsl(genRandomColor)[0] + 200,
-            convert.hex.hsl(genRandomColor)[1],
-            convert.hex.hsl(genRandomColor)[2]
+            convert.hex.hsl(genRandomColor)[0],
+            convert.hex.hsl(genRandomColor)[1] - 50,
+            convert.hex.hsl(genRandomColor)[2] + 100
           );
-        // console.log(convert.hex.hsl(genRandomColor));
+        this.colorValues[2] =
+          "#" +
+          convert.hsl.hex(
+            convert.hex.hsl(genRandomColor)[0],
+            convert.hex.hsl(genRandomColor)[1],
+            convert.hex.hsl(genRandomColor)[2] - 100
+          );
+
+        this.colorValues[3] =
+          "#" +
+          convert.hsl.hex(
+            convert.hex.hsl(genRandomColor)[0] + 180,
+            convert.hex.hsl(genRandomColor)[1] - 30,
+            convert.hex.hsl(genRandomColor)[2] - 30
+          );
       } else if (
         (this.colorValues.length != 0 || this.colorValues.length < 0) &&
         randomColor != ""
