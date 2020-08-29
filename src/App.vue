@@ -30,36 +30,65 @@ export default {
   data() {
     return {
       colorValues: [],
-      randomColorVal: "#" + Math.floor(Math.random() * 16777215).toString(16),
+      randomColorVal: "#" + Math.floor(Math.random() * 25000000).toString(16),
     };
   },
   methods: {
     setColorValues(randomColor) {
       if (this.colorValues.length == 0 && this.randomColorVal != "") {
         var genRandomColor = Math.floor(Math.random() * 16777215).toString(16);
+        genRandomColor = convert.rgb.hex(
+          convert.hex.rgb(genRandomColor)[0] - 60 < 0
+            ? convert.hex.rgb(genRandomColor)[0] + 60
+            : convert.hex.rgb(genRandomColor)[0] + 60 > 255
+            ? convert.hex.rgb(genRandomColor)[0] - 60
+            : convert.hex.rgb(genRandomColor)[0],
+          convert.hex.rgb(genRandomColor)[1] - 60 < 0
+            ? convert.hex.rgb(genRandomColor)[1] + 60
+            : convert.hex.rgb(genRandomColor)[1] + 60 > 255
+            ? convert.hex.rgb(genRandomColor)[1] - 60
+            : convert.hex.rgb(genRandomColor)[1],
+          convert.hex.rgb(genRandomColor)[2] - 60 < 0
+            ? convert.hex.rgb(genRandomColor)[2] + 60
+            : convert.hex.rgb(genRandomColor)[2] + 60 > 255
+            ? convert.hex.rgb(genRandomColor)[2] - 60
+            : convert.hex.rgb(genRandomColor)[2]
+        );
+        var genCompColor = convert.hsl.hex(
+          convert.hex.hsl(genRandomColor)[0] + 180,
+          convert.hex.hsl(genRandomColor)[1],
+          convert.hex.hsl(genRandomColor)[2]
+        );
 
-        this.colorValues[0] = "#" + genRandomColor;
-        this.colorValues[1] =
+        this.colorValues[0] =
           "#" +
-          convert.hsl.hex(
-            convert.hex.hsl(genRandomColor)[0],
-            convert.hex.hsl(genRandomColor)[1] - 50,
-            convert.hex.hsl(genRandomColor)[2] + 100
+          convert.rgb.hex(
+            convert.hex.rgb(genRandomColor)[0] - 60,
+            convert.hex.rgb(genRandomColor)[1] - 60,
+            convert.hex.rgb(genRandomColor)[2] - 60
           );
+        this.colorValues[1] = "#" + genRandomColor;
         this.colorValues[2] =
           "#" +
-          convert.hsl.hex(
-            convert.hex.hsl(genRandomColor)[0],
-            convert.hex.hsl(genRandomColor)[1],
-            convert.hex.hsl(genRandomColor)[2] - 100
+          convert.rgb.hex(
+            convert.hex.rgb(genRandomColor)[0] + 60,
+            convert.hex.rgb(genRandomColor)[1] + 60,
+            convert.hex.rgb(genRandomColor)[2] + 60
           );
-
         this.colorValues[3] =
           "#" +
-          convert.hsl.hex(
-            convert.hex.hsl(genRandomColor)[0] + 180,
-            convert.hex.hsl(genRandomColor)[1] - 30,
-            convert.hex.hsl(genRandomColor)[2] - 30
+          convert.rgb.hex(
+            convert.hex.rgb(genCompColor)[0] - 60,
+            convert.hex.rgb(genCompColor)[1] - 60,
+            convert.hex.rgb(genCompColor)[2] - 60
+          );
+        this.colorValues[4] = "#" + genCompColor;
+        this.colorValues[5] =
+          "#" +
+          convert.rgb.hex(
+            convert.hex.rgb(genCompColor)[0] + 60,
+            convert.hex.rgb(genCompColor)[1] + 60,
+            convert.hex.rgb(genCompColor)[2] + 60
           );
       } else if (
         (this.colorValues.length != 0 || this.colorValues.length < 0) &&
@@ -114,4 +143,9 @@ export default {
   margin-right: 13rem;
   background-color: transparent;
 }
+/* @media only screen and (max-width: 768px) {
+  #app {
+    width: 100%;
+  }
+} */
 </style>

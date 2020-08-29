@@ -40,11 +40,11 @@ export default {
   width: 33.35%;
   height: 40vh;
   background: var(--accent-color);
-  /* border: 0.5rem solid #051433; */
+  border: 0.5rem solid #051433;
 }
 #colorSel {
   position: absolute;
-  top: 0.5rem;
+  top: 0.4rem;
   right: 0.5rem;
   width: 3rem;
   cursor: pointer;
@@ -54,21 +54,11 @@ export default {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 #colorCode {
-  margin: 0;
-  position: absolute;
-  top: 15vh;
-  left: 30%;
-  font-size: 2.5rem;
+  height: 2rem;
+  padding-left: 0.5rem;
+  font-size: 1.5rem;
   color: var(--accent-color);
-  background-color: transparent;
 }
-/* #editIcon {
-  position: absolute;
-  top: 0.2rem;
-  right: 0.2rem;
-  background: white;
-  cursor: pointer;
-} */
 input[type="color"] {
   -webkit-appearance: none;
   border: none;
@@ -80,5 +70,23 @@ input[type="color"]::-webkit-color-swatch {
   border: 0.05rem solid var(--accent-color);
   border-radius: 0.1rem;
   border-style: groove;
+}
+@media only screen and (max-width: 680px) {
+  #colorItem {
+    width: 100%;
+    height: 26.66vh;
+    border: 0.3rem solid #051433;
+  }
+  #colorCode {
+    height: 2rem;
+    padding-left: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--accent-color);
+  }
+  #colorSel {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.5rem;
+  }
 }
 </style>

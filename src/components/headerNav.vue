@@ -89,4 +89,10 @@ a:active {
   align-items: center;
   justify-content: center;
 }
+@media only screen and (max-width: 768px) {
+  #headerNav {
+    display: flex;
+    flex-direction: column;
+  }
+}
 </style>

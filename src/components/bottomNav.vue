@@ -1,27 +1,5 @@
 <template>
   <div id="bottomNav" class="bottomNav">
-    <form>
-      <div id="saveName">
-        <label for="name">Name :</label>
-        <input
-          type="text"
-          id="name"
-          placeholder="color name to save"
-          title="name to be saved"
-          v-model="colorName"
-        />
-      </div>
-      <select name="langSel" id="langSel" title="language options" v-model="selectedLang">
-        <option value selected>Language</option>
-        <option value="css">CSS</option>
-        <option value="Less">less</option>
-        <option value="python">Python</option>
-        <option value="js">JS</option>
-        <option value="plain">Plain Text</option>
-      </select>
-      <button id="copyWithLang" @click="copyWithLang" title="copy with language syntax">Copy</button>
-      <button id="downloadAsFile" @click="createPDF">Download</button>
-    </form>
     <div id="heart" title="like">
       <svg
         version="1.1"
@@ -104,7 +82,30 @@
         <g />
       </svg>
     </div>
+    <button id="prevButton" title="Get Previous random palette">Previous</button>
     <button id="ranButton" title="Generate random palettes" @click="randomColor">Random Generate</button>
+    <form>
+      <div id="saveName">
+        <label for="name">Name :</label>
+        <input
+          type="text"
+          id="name"
+          placeholder="color name to save"
+          title="name to be saved"
+          v-model="colorName"
+        />
+      </div>
+      <select name="langSel" id="langSel" title="language options" v-model="selectedLang">
+        <option value selected>Language</option>
+        <option value="css">CSS</option>
+        <option value="Less">less</option>
+        <option value="python">Python</option>
+        <option value="js">JS</option>
+        <option value="plain">Plain Text</option>
+      </select>
+      <button id="copyWithLang" @click="copyWithLang" title="copy with language syntax">Copy</button>
+      <button id="downloadAsFile" @click="createPDF">Download</button>
+    </form>
   </div>
 </template>
 
@@ -224,6 +225,7 @@ input:focus {
 }
 #ranButton,
 #downloadAsFile,
+#prevButton,
 #copyWithLang {
   height: 2rem;
   padding: 1rem;
@@ -240,5 +242,15 @@ input:focus {
 #ranButton:hover {
   color: var(--light-color);
   background: var(--accent-color);
+}
+@media only screen and (max-width: 768px) {
+  #bottomNav {
+    display: flex;
+    flex-direction: column;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>

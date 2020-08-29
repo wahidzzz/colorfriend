@@ -1,18 +1,19 @@
 <template>
   <div id="#mainBody">
-    <div id="row">
-      <colorItem :colorValue="colorValues[0]" @changeColor="changeColor" />
-      <colorItem :colorValue="colorValues[1]" @changeColor="changeColor" />
-      <colorItem :colorValue="colorValues[2]" @changeColor="changeColor" />
-    </div>
-    <div id="row">
-      <colorItem :colorValue="colorValues[3]" @changeColor="changeColor" />
-      <colorItem :colorValue="colorValues[4]" @changeColor="changeColor" />
-      <colorItem :colorValue="colorValues[5]" @changeColor="changeColor" />
+    <div class="row-sm">
+      <div id="row" class="col-sm">
+        <colorItem :colorValue="colorValues[0]" @changeColor="changeColor" />
+        <colorItem :colorValue="colorValues[1]" @changeColor="changeColor" />
+        <colorItem :colorValue="colorValues[2]" @changeColor="changeColor" />
+      </div>
+      <div id="row" class="col-sm">
+        <colorItem :colorValue="colorValues[3]" @changeColor="changeColor" />
+        <colorItem :colorValue="colorValues[4]" @changeColor="changeColor" />
+        <colorItem :colorValue="colorValues[5]" @changeColor="changeColor" />
+      </div>
     </div>
   </div>
 </template>
-
 <script>
 import colorItem from "./colorItem";
 export default {
@@ -38,5 +39,21 @@ export default {
 }
 #row:first-child {
   margin-top: 10vh;
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  #row {
+    margin-top: 10vh;
+  }
+  .row-sm {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  .col-sm {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
 }
 </style>
