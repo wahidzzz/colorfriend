@@ -1,6 +1,6 @@
 <template>
   <div id="bottomNav" class="bottomNav">
-    <div id="heart" title="like">
+    <div id="heart" title="like" @click="likedPalette">
       <svg
         version="1.1"
         id="Capa_1"
@@ -118,6 +118,7 @@ export default {
     return {
       colorName: "",
       selectedLang: "",
+      colorNum: 1,
     };
   },
   methods: {
@@ -147,6 +148,30 @@ export default {
     },
     copyWithLang() {
       console.log("");
+    },
+    likedPalette() {
+      fetch("https://api.ipify.org?format=json")
+        .then((x) => x.json())
+        .then(({ ip }) => {
+          var colorFriendData = JSON.parse(localStorage.colorFriend);
+          if (
+            colorFriendData.userID != "" &&
+            colorFriendData.colorPalette.color
+          ) {
+            colorFriendData.colorPalette[
+              "color" + this.colorNum++
+            ] = this.colorValues;
+            localStorage.setItem(
+              "colorFriend",
+              JSON.stringify(colorFriendData)
+            );
+          } else {
+            localStorage.setItem(
+              "colorFriend",
+              JSON.stringify({ userID: ip, colorPalette: {} })
+            );
+          }
+        });
     },
   },
 };
