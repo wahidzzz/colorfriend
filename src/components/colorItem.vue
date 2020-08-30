@@ -2,9 +2,14 @@
   <div
     class="colorItem"
     id="colorItem"
-    :style="[{'background-color':colorValue},colorInputValue=='' ? { 'bakcground-color': colorValue } : { 'background-color': colorInputValue }]"
+    :style="[
+      { 'background-color': colorValue },
+      colorInputValue == ''
+        ? { 'bakcground-color': colorValue }
+        : { 'background-color': colorInputValue },
+    ]"
   >
-    <div id="colorCode">{{colorInputValue==""? colorValue:colorInputValue}}</div>
+    <div id="colorCode">{{ colorInputValue == "" ? colorValue : colorInputValue }}</div>
     <input
       id="colorSel"
       type="color"

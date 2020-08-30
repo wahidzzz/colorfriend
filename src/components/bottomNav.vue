@@ -110,6 +110,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import jsPDF from "jspdf";
 export default {
   name: "bottomNav",
@@ -122,12 +123,12 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["setColors"]),
     copyPalette() {
       this.$emit("copyColorCodes");
     },
     randomColor() {
-      var randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-      this.$emit("randomColor", randomColor);
+      this.setColors();
     },
     createPDF() {
       var selectedLang = this.selectedLang == "" ? "plain" : this.selectedLang;

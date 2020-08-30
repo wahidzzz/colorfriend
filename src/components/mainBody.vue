@@ -2,30 +2,35 @@
   <div id="#mainBody">
     <div class="row-sm">
       <div id="row" class="col-sm">
-        <colorItem :colorValue="colorValues[0]" @changeColor="changeColor" />
-        <colorItem :colorValue="colorValues[1]" @changeColor="changeColor" />
-        <colorItem :colorValue="colorValues[2]" @changeColor="changeColor" />
+        <colorItem :colorValue="allColorValues[0]" @changeColor="changeColor" />
+        <colorItem :colorValue="allColorValues[1]" @changeColor="changeColor" />
+        <colorItem :colorValue="allColorValues[2]" @changeColor="changeColor" />
       </div>
       <div id="row" class="col-sm">
-        <colorItem :colorValue="colorValues[3]" @changeColor="changeColor" />
-        <colorItem :colorValue="colorValues[4]" @changeColor="changeColor" />
-        <colorItem :colorValue="colorValues[5]" @changeColor="changeColor" />
+        <colorItem :colorValue="allColorValues[3]" @changeColor="changeColor" />
+        <colorItem :colorValue="allColorValues[4]" @changeColor="changeColor" />
+        <colorItem :colorValue="allColorValues[5]" @changeColor="changeColor" />
       </div>
     </div>
   </div>
 </template>
 <script>
 import colorItem from "./colorItem";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "mainBody",
   components: {
     colorItem,
   },
-  props: ["colorValues"],
   methods: {
+    ...mapActions(["setColors"]),
     changeColor(id, colorInputValue) {
       this.$emit("changeColor", id, colorInputValue);
     },
+  },
+  computed: mapGetters(["allColorValues"]),
+  created() {
+    this.setColors();
   },
 };
 </script>
