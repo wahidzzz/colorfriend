@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <headerNav />
-    <mainBody @changeColor="changeColor" />
-    <bottomNav @copyColorCodes="copyPalette" :colorValues="colorValues" />
+    <mainBody />
+    <bottomNav />
   </div>
 </template>
 
@@ -25,24 +25,10 @@ export default {
   data() {
     return {
       colorValues: [],
-      randomColorVal: "#" + Math.floor(Math.random() * 25000000).toString(16),
+      // randomColorVal: "#" + Math.floor(Math.random() * 25000000).toString(16),
     };
   },
-  methods: {
-    changeColor(id, colorInputValue) {
-      this.colorValues[id] = colorInputValue;
-    },
-    copyPalette() {
-      this.$copyText(this.colorValues);
-      this.$toasted.show("Copied !", {
-        theme: "bubble",
-        className: "toastElement",
-        containerClass: "toastContainer",
-        position: "bottom-right",
-        duration: 3000,
-      });
-    },
-  },
+  methods: {},
 };
 </script>
 

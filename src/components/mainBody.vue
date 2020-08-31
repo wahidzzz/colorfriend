@@ -2,14 +2,14 @@
   <div id="#mainBody">
     <div class="row-sm">
       <div id="row" class="col-sm">
-        <colorItem :colorValue="allColorValues[0]" @changeColor="changeColor" />
-        <colorItem :colorValue="allColorValues[1]" @changeColor="changeColor" />
-        <colorItem :colorValue="allColorValues[2]" @changeColor="changeColor" />
+        <colorItem />
+        <colorItem />
+        <colorItem />
       </div>
       <div id="row" class="col-sm">
-        <colorItem :colorValue="allColorValues[3]" @changeColor="changeColor" />
-        <colorItem :colorValue="allColorValues[4]" @changeColor="changeColor" />
-        <colorItem :colorValue="allColorValues[5]" @changeColor="changeColor" />
+        <colorItem />
+        <colorItem />
+        <colorItem />
       </div>
     </div>
   </div>
@@ -24,17 +24,9 @@ export default {
   },
   methods: {
     ...mapActions(["setColors"]),
-    changeColor(id, colorInputValue) {
-      this.$emit("changeColor", id, colorInputValue);
-    },
   },
   computed: {
     ...mapGetters(["allColorValues"]),
-  },
-  watch: {
-    allColorValues: function (val) {
-      console.log(val);
-    },
   },
   created() {
     this.setColors();

@@ -83,7 +83,7 @@
       </svg>
     </div>
     <button id="prevButton" title="Get Previous random palette">Previous</button>
-    <button id="ranButton" title="Generate random palettes" @click="randomColor">Random Generate</button>
+    <button id="ranButton" title="Generate random palettes" @click="setColors">Random Generate</button>
     <form>
       <div id="saveName">
         <label for="name">Name :</label>
@@ -110,25 +110,27 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import jsPDF from "jspdf";
 export default {
   name: "bottomNav",
-  props: ["colorValues"],
   data() {
     return {
       colorName: "",
       selectedLang: "",
-      colorNum: 1,
     };
   },
   methods: {
     ...mapActions(["setColors"]),
     copyPalette() {
-      this.$emit("copyColorCodes");
-    },
-    randomColor() {
-      this.setColors();
+      this.$copyText(this.allColorValues);
+      this.$toasted.show("Copied !", {
+        theme: "bubble",
+        className: "toastElement",
+        containerClass: "toastContainer",
+        position: "bottom-right",
+        duration: 3000,
+      });
     },
     createPDF() {
       var selectedLang = this.selectedLang == "" ? "plain" : this.selectedLang;
@@ -142,7 +144,7 @@ export default {
       doc.text("colorfriend color-palette", 50, 20);
       doc.text(saveColorName + "", 50, 40);
       var y = 40;
-      this.colorValues.forEach((color) => {
+      this.allColorValues.forEach((color) => {
         doc.text(color + "", 60, (y += 20));
       });
       doc.save("colorfriend-" + this.colorName + ".pdf");
@@ -154,26 +156,22 @@ export default {
       fetch("https://api.ipify.org?format=json")
         .then((x) => x.json())
         .then(({ ip }) => {
-          var colorFriendData = JSON.parse(localStorage.colorFriend);
-          if (
-            colorFriendData.userID != "" &&
-            colorFriendData.colorPalette.color
-          ) {
-            colorFriendData.colorPalette[
-              "color" + this.colorNum++
-            ] = this.colorValues;
-            localStorage.setItem(
-              "colorFriend",
-              JSON.stringify(colorFriendData)
-            );
-          } else {
+          if (localStorage.getItem("colorFriend") === null) {
             localStorage.setItem(
               "colorFriend",
               JSON.stringify({ userID: ip, colorPalette: {} })
             );
           }
+          var colorFriendData = JSON.parse(localStorage.getItem("colorFriend"));
+          colorFriendData.colorPalette[
+            "color" + Date.now()
+          ] += this.allColorValues;
+          localStorage.setItem("colorFriend", JSON.stringify(colorFriendData));
         });
     },
+  },
+  computed: {
+    ...mapGetters(["allColorValues"]),
   },
 };
 </script>

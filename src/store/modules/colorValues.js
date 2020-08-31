@@ -73,10 +73,16 @@ const actions = {
     }
     commit("setColors", state.colorValues);
   },
+  changeSingleColor({ commit }, id, colorInputValue) {
+    console.log(id, colorInputValue);
+    commit("changeSingleColor", { id, colorInputValue });
+  },
 };
 
 const mutations = {
   setColors: (state, colorValues) => (state.colorValues = colorValues),
+  changeSingleColor: (id, colorInputValue) =>
+    (state.colorValues[id] = colorInputValue),
 };
 
 export default {

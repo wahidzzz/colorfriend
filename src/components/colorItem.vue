@@ -3,13 +3,13 @@
     class="colorItem"
     id="colorItem"
     :style="[
-      { 'background-color': colorValue },
+      { 'background-color': allColorValues[this.id] },
       colorInputValue == ''
-        ? { 'bakcground-color': colorValue }
+        ? { 'bakcground-color': allColorValues[this.id] }
         : { 'background-color': colorInputValue },
     ]"
   >
-    <div id="colorCode">{{ colorInputValue == "" ? colorValue : colorInputValue }}</div>
+    <div id="colorCode">{{ colorInputValue == "" ?allColorValues[this.id]: colorInputValue }}</div>
     <input
       id="colorSel"
       type="color"
@@ -20,22 +20,27 @@
   </div>
 </template>
 <script>
+import store from "../store";
+import { mapGetters } from "vuex";
 export default {
   name: "colorItem",
-  props: ["colorValue"],
   data() {
     return {
-      colorInputValue: this.colorValue,
+      colorInputValue: "",
       id: "",
     };
   },
   created() {
-    this.id = this._uid - 4;
+    this.id = this._uid - 6;
+    this.colorInputValue = this.allColorValues[this.id];
   },
   methods: {
     changeColor() {
-      this.$emit("changeColor", this.id, this.colorInputValue);
+      store.dispatch("changeSingleColor", this.id, this.colorInputValue);
     },
+  },
+  computed: {
+    ...mapGetters(["allColorValues"]),
   },
 };
 </script>
