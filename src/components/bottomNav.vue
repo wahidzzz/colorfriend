@@ -122,16 +122,6 @@ export default {
   },
   methods: {
     ...mapActions(["setColors"]),
-    copyPalette() {
-      this.$copyText(this.allColorValues);
-      this.$toasted.show("Copied !", {
-        theme: "bubble",
-        className: "toastElement",
-        containerClass: "toastContainer",
-        position: "bottom-right",
-        duration: 3000,
-      });
-    },
     createPDF() {
       var selectedLang = this.selectedLang == "" ? "plain" : this.selectedLang;
       var saveColorName =
@@ -168,6 +158,16 @@ export default {
           ] += this.allColorValues;
           localStorage.setItem("colorFriend", JSON.stringify(colorFriendData));
         });
+    },
+    copyPalette() {
+      this.$copyText(this.allColorValues);
+      this.$toasted.show("Copied !", {
+        theme: "bubble",
+        className: "toastElement",
+        containerClass: "toastContainer",
+        position: "bottom-right",
+        duration: 3000,
+      });
     },
   },
   computed: {
