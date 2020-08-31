@@ -71,7 +71,6 @@ const actions = {
     } else {
       console.log("hell");
     }
-    console.log(state.colorValues);
     commit("setColors", state.colorValues);
   },
 };

@@ -28,7 +28,14 @@ export default {
       this.$emit("changeColor", id, colorInputValue);
     },
   },
-  computed: mapGetters(["allColorValues"]),
+  computed: {
+    ...mapGetters(["allColorValues"]),
+  },
+  watch: {
+    allColorValues: function (val) {
+      console.log(val);
+    },
+  },
   created() {
     this.setColors();
   },
