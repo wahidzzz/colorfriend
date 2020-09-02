@@ -25,7 +25,6 @@ export default {
   data() {
     return {
       colorValues: [],
-      // randomColorVal: "#" + Math.floor(Math.random() * 25000000).toString(16),
     };
   },
   methods: {},

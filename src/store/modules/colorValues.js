@@ -1,6 +1,7 @@
 import convert from "color-convert";
 const state = {
   colorValues: [],
+  prevColorValues: [],
 };
 
 const getters = {
@@ -9,6 +10,8 @@ const getters = {
 
 const actions = {
   setColors({ commit }) {
+    state.prevColorValues = state.colorValues;
+    console.log(state.prevColorValues);
     if (
       state.colorValues.length == 0 ||
       state.colorValues.length != 0 ||
@@ -73,15 +76,14 @@ const actions = {
     }
     commit("setColors", state.colorValues);
   },
-  changeSingleColor({ commit }, id) {
-    state.colorValues[id] = "#ffffff";
-    commit("changeSingleColor", state.colorValues);
+  changeSingleColor({ commit }, { id, colorInputValue }) {
+    state.colorValues[id] = colorInputValue;
+    commit("setColors", state.colorValues);
   },
 };
 
 const mutations = {
   setColors: (state, colorValues) => (state.colorValues = colorValues),
-  changeSingleColor: (state, colorValues) => (state.colorValues = colorValues),
 };
 
 export default {

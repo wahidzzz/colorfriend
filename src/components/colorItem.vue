@@ -37,7 +37,10 @@ export default {
   methods: {
     ...mapActions(["changeSingleColor"]),
     changeColor() {
-      store.dispatch("changeSingleColor", this.id);
+      store.dispatch("changeSingleColor", {
+        id: this.id,
+        colorInputValue: this.colorInputValue,
+      });
     },
   },
   computed: {
