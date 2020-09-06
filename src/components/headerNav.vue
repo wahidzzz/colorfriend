@@ -17,7 +17,7 @@
         </a>
       </div>
       <div>
-        <a href="https://www.buymeacoffee.com/wahidzzz">
+        <a href="https://www.buymeacoffee.com/wahidzzz" target="_blank">
           <img
             src="../assets/buymeacoffee.svg"
             alt="buy me a coffee"
@@ -27,7 +27,7 @@
         </a>
       </div>
       <div>
-        <a href="https://github.com/wahidzzz/colorfriend" target="_blank" class="github">
+        <a href="https://github.com/wahidzzz/colorfriend" target="_blank">
           <img src="../assets/github.svg" alt="github" width="35" title="contribute on gitub" />
         </a>
       </div>
