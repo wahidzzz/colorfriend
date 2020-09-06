@@ -6,17 +6,31 @@
     </div>
     <div id="navLinks">
       <div>
-        <a href="#">Liked Palettes</a>
+        <a href="./liked-palettes">Liked Palettes</a>
       </div>
       <div>
-        <a href="#">How it works ?</a>
+        <a href="./how-it-works">How it works ?</a>
       </div>
       <div>
-        <a href="#">Contribute</a>
+        <a href="https://www.patreon.com/wahid_zzz" target="_blank">
+          <img src="../assets/patreon.svg" alt="patreon" title="support me on patreon" width="30" />
+        </a>
       </div>
-    </div>
-    <div id="box">
-      <img src="../assets/github.svg" alt="github" width="35" />
+      <div>
+        <a href="https://www.buymeacoffee.com/wahidzzz">
+          <img
+            src="../assets/buymeacoffee.svg"
+            alt="buy me a coffee"
+            title="buy me a coffee"
+            width="30"
+          />
+        </a>
+      </div>
+      <div>
+        <a href="https://github.com/wahidzzz/colorfriend" target="_blank" class="github">
+          <img src="../assets/github.svg" alt="github" width="35" title="contribute on gitub" />
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -41,9 +55,13 @@ export default {
   top: 0;
 }
 #navLinks {
+  position: absolute;
+  right: -8rem;
   display: flex;
   width: 40vw;
-  justify-content: space-evenly;
+  margin-right: 10rem;
+  justify-content: space-between;
+  align-items: center;
   background-color: transparent;
   text-transform: uppercase;
 }
@@ -57,13 +75,10 @@ a {
   transition: border 0.5s ease-in-out;
 }
 #navLinks div:hover,
-div:focus,
-a:hover,
-a:focus {
+div:focus {
   border-bottom: 0.2rem solid var(--accent-color);
 }
-#navLinks div:active,
-a:active {
+#navLinks div:active {
   border-bottom: 0.1rem solid var(--extra-color);
 }
 #logo {
@@ -78,21 +93,18 @@ a:active {
   text-transform: lowercase;
   margin-left: -0.3rem;
 }
-#box {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 3rem;
-  height: 4rem;
-  background-color: var(--light-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+img {
+  background-color: transparent;
 }
 @media only screen and (max-width: 768px) {
   #headerNav {
     display: flex;
     flex-direction: column;
+    height: 20vh;
+    justify-content: space-between;
+  }
+  #navLinks {
+    display: flex;
   }
 }
 </style>
