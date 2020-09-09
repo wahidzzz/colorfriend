@@ -13,7 +13,12 @@
       </div>
       <div>
         <a href="https://www.patreon.com/wahid_zzz" target="_blank">
-          <img src="../assets/patreon.svg" alt="patreon" title="support me on patreon" width="30" />
+          <img
+            src="../assets/patreon.svg"
+            alt="patreon"
+            title="support me on patreon"
+            width="30"
+          />
         </a>
       </div>
       <div>
@@ -28,7 +33,12 @@
       </div>
       <div>
         <a href="https://github.com/wahidzzz/colorfriend" target="_blank">
-          <img src="../assets/github.svg" alt="github" width="35" title="contribute on gitub" />
+          <img
+            src="../assets/github.svg"
+            alt="github"
+            width="35"
+            title="contribute on gitub"
+          />
         </a>
       </div>
     </div>

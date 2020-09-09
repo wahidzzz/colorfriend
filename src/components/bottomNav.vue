@@ -82,7 +82,7 @@
         <g />
       </svg>
     </div>
-    <button id="prevButton" title="Get Previous random palette">Previous</button>
+    <button id="prevButton" title="Get Previous random palette" @click="getPrev">Previous</button>
     <button id="ranButton" title="Generate random palettes" @click="setColors">Random Generate</button>
     <form>
       <div id="saveName">
@@ -169,9 +169,12 @@ export default {
         duration: 3000,
       });
     },
+    getPrev() {
+      console.log(this.prevColorValues);
+    },
   },
   computed: {
-    ...mapGetters(["allColorValues"]),
+    ...mapGetters(["allColorValues", "prevColorValues"]),
   },
 };
 </script>

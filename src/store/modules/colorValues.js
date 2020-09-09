@@ -6,12 +6,12 @@ const state = {
 
 const getters = {
   allColorValues: (state) => state.colorValues,
+  prevColorValues: (state) => state.prevColorValues,
 };
 
 const actions = {
   setColors({ commit }) {
     state.prevColorValues = state.colorValues;
-    console.log(state.prevColorValues);
     if (
       state.colorValues.length == 0 ||
       state.colorValues.length != 0 ||
