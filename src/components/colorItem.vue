@@ -46,11 +46,12 @@ export default {
   computed: {
     ...mapGetters(["allColorValues"]),
   },
-  // watch: {
-  //   colorInputValue: function (oldValue, newValue) {
-  //     console.log(oldValue, newValue);
-  //   },
-  // },
+  watch: {
+    colorInputValue: function (newValue, oldValue) {
+      console.log(this.allColorValues[this.id]);
+      console.log("Something", newValue, oldValue);
+    },
+  },
 };
 </script>
 <style scoped>
