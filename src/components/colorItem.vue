@@ -9,7 +9,11 @@
         : { 'background-color': colorInputValue },
     ]"
   >
-    <div id="colorCode">{{ colorInputValue == "" ? this.allColorValues[this.id]: colorInputValue }}</div>
+    <div id="colorCode">
+      {{
+        colorInputValue == "" ? this.allColorValues[this.id] : colorInputValue
+      }}
+    </div>
     <input
       id="colorSel"
       type="color"
