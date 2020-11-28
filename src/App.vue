@@ -13,6 +13,8 @@ import mainBody from "./components/mainBody";
 import bottomNav from "./components/bottomNav";
 import VueClipboard from "vue-clipboard2";
 import Toasted from "vue-toasted";
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
 Vue.use(VueClipboard);
 Vue.use(Toasted);
 export default {

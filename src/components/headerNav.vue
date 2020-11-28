@@ -5,8 +5,9 @@
       <span>Friend</span>
     </div>
     <div id="navLinks">
+      
       <div>
-        <a href="./liked-palettes">Liked Palettes</a>
+       <router-link to="/liked-palettes">Liked Palettes</router-link>
       </div>
       <div>
         <a href="./how-it-works">How it works ?</a>
@@ -76,7 +77,7 @@ export default {
   text-transform: uppercase;
 }
 #navLinks div,
-a {
+a{
   background-color: transparent;
   text-decoration: none;
   color: var(--accent-color);
