@@ -84,7 +84,7 @@
     </div>
     <button id="prevButton" title="Get Previous random palette" @click="getPrev">Previous</button>
     <button id="ranButton" title="Generate random palettes" @click="setColors">Random Generate</button>
-    <form>
+    <form id="colorPalette" method="POST">
       <div id="saveName">
         <label for="name">Name :</label>
         <input
