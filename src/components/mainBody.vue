@@ -45,6 +45,10 @@ export default {
   margin-top: 10vh;
 }
 @media only screen and (max-width: 768px) {
+
+  #mainBody{
+    z-index:-1;
+  }
   /* For mobile phones: */
   #row {
     margin-top: 10vh;

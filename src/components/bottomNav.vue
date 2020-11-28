@@ -83,8 +83,11 @@
       </svg>
     </div>
     <button id="prevButton" title="Get Previous random palette" @click="getPrev">Previous</button>
-    <button id="ranButton" title="Generate random palettes" @click="setColors">Random Generate</button>
-    <form id="colorPalette" method="POST">
+    <button id="ranButton" title="Generate random palettes" @click="setColors">Generate</button>
+    <div class="copyRight">
+      <h3>Copyright © 2019 by Wahid Shaikh <a href="https://webxera.xyz" target="_blank">@webxera</a></h3>
+    </div>
+    <!-- <form id="colorPalette" method="POST">
       <div id="saveName">
         <label for="name">Name :</label>
         <input
@@ -105,13 +108,12 @@
       </select>
       <button id="copyWithLang" @click="copyWithLang" title="copy with language syntax">Copy</button>
       <button id="downloadAsFile" @click="createPDF">Download</button>
-    </form>
+    </form> -->
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import jsPDF from "jspdf";
 export default {
   name: "bottomNav",
   data() {
@@ -122,26 +124,26 @@ export default {
   },
   methods: {
     ...mapActions(["setColors"]),
-    createPDF() {
-      var selectedLang = this.selectedLang == "" ? "plain" : this.selectedLang;
-      var saveColorName =
-        this.colorName == ""
-          ? "colorfriend-color-palette" + this.selectedLang
-          : "colorfriend-" + this.colorName + this.selectedLang;
-      console.log(selectedLang, saveColorName);
-      var doc = new jsPDF();
-      doc.setFont("poppins", "normal");
-      doc.text("colorfriend color-palette", 50, 20);
-      doc.text(saveColorName + "", 50, 40);
-      var y = 40;
-      this.allColorValues.forEach((color) => {
-        doc.text(color + "", 60, (y += 20));
-      });
-      doc.save("colorfriend-" + this.colorName + ".pdf");
-    },
-    copyWithLang() {
-      console.log("");
-    },
+    // createPDF() {
+    //   var selectedLang = this.selectedLang == "" ? "plain" : this.selectedLang;
+    //   var saveColorName =
+    //     this.colorName == ""
+    //       ? "colorfriend-color-palette" + this.selectedLang
+    //       : "colorfriend-" + this.colorName + this.selectedLang;
+    //   console.log(selectedLang, saveColorName);
+    //   var doc = new jsPDF();
+    //   doc.setFont("poppins", "normal");
+    //   doc.text("colorfriend color-palette", 50, 20);
+    //   doc.text(saveColorName + "", 50, 40);
+    //   var y = 40;
+    //   this.allColorValues.forEach((color) => {
+    //     doc.text(color + "", 60, (y += 20));
+    //   });
+    //   doc.save("colorfriend-" + this.colorName + ".pdf");
+    // },
+    // copyWithLang() {
+    //   console.log("");
+    // },
     likedPalette() {
       var finalData = JSON.parse(JSON.stringify(this.allColorValues));
       console.log(finalData);
@@ -270,14 +272,25 @@ input:focus {
   color: var(--light-color);
   background: var(--accent-color);
 }
+.copyRight h3{
+  background: var(--dark-color);
+  color: var(--accent-color);
+}
+.copyRight a{
+  background: var(--dark-color);
+  color: var(--accent-color);
+  text-decoration: none;
+  font-style: italic;
+}
 @media only screen and (max-width: 768px) {
   #bottomNav {
     display: flex;
-    flex-direction: column;
   }
-  form {
-    display: flex;
-    flex-direction: column;
+  #ranButton{
+    width:35%;
+  }
+  .copyRight{
+    display:none;
   }
 }
 </style>
