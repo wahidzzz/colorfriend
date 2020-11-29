@@ -205,7 +205,7 @@ img {
       left: 0;
       background: black;
       width: 100vw;
-      height: 80vh;
+      height: 90vh;
       overflow: hidden;
       color: white;
       /* hide the menu above the screen by default */

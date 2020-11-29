@@ -207,19 +207,19 @@ export default {
   cursor: pointer;
   fill: var(--accent-color);
 }
-form {
+/* form {
   width: 55%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--dark-color);
-}
+} */
 /* form #downloadAsFile {
   margin-left: 0.5rem;
   border-left: 0.02rem solid var(--accent-color);
   border-radius: 0;
 } */
-#saveName input {
+/* #saveName input {
   background-color: var(--light-color);
   height: 2rem;
   padding: 0.5rem;
@@ -251,11 +251,9 @@ input:focus {
   border: none;
   outline: none;
   border-radius: 0.2rem;
-}
+} */
 #ranButton,
-#downloadAsFile,
-#prevButton,
-#copyWithLang {
+#prevButton{
   height: 2rem;
   padding: 1rem;
   padding-top: 0.2rem;
