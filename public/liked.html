@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css"
         integrity="sha512-ZRv40llEogRmoWgZwnsqke3HNzJ0kiI0+pcMgiz2bxO6Ew1DVBtWjVn0qjrXdT3+u+pSN36gLgmJiiQ3cQtyzA=="
         crossorigin="anonymous" />
-    <title>Colorfriend - Your daily inspirational color palettes </title>
+    <title>ColorFriend - Your daily inspirational color palettes </title>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
@@ -22,24 +22,68 @@
             --dark-color: #142850;
             --extra-color: #32e0c4;
             font-family: "Poppins", sans-serif;
+
         }
 
-        /* 
-        .container {
-            margin: 0;
-            padding: 0;
-        } */
+        body,
+        html {
+            background-color: var(--dark-color);
+        }
+
+        .card {
+            background-color: var(--background-color);
+            border-radius: .5em;
+            margin: 1rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.30), 0 15px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-content {
+            color: var(--accent-color);
+        }
+
+
+        .row {
+            padding: .5em;
+            border-radius: .5em;
+        }
     </style>
 </head>
 
 <body>
-    <div class="row">
-        <div class="columns is-desktop">
-            <div class="column is-desktop">
+    <!-- <div class="row">
+        <div id="columns" class="columns is-desktop"></div>
+    </div> -->
+</body>
+<script>
+
+    var colorData = JSON.parse(localStorage.colorFriend);
+    var colArr = colorData.colorPalette;
+    var colName = [];
+    var colVal = [];
+    for (var i in colArr) {
+        colName.push(i);
+        colVal.push(colorData.colorPalette[i]);
+    }
+    var rowNum = colName.length / 3;
+    var columns;
+    console.log(rowNum);
+    for (let row = 0; row < rowNum; row++) {
+        var rowVal = document.createElement("div");
+        rowVal.setAttribute("class", `row${row}`);
+        rowVal.innerHTML += ` <div id="columns${row}" class="columns is-desktop"></div>`;
+        document.body.appendChild(rowVal);
+        columns = document.getElementById(`columns${row}`);
+        addCols(row);
+    }
+
+    function addCols(rowNumber = 0) {
+        for (let i = rowNumber; i < colName.length; i++) {
+            columns.innerHTML +=
+                `<div class="column">
                 <div class="card">
                     <header class="card-header">
                         <p class="card-header-title">
-                            Component
+                            ${colName[i]}
                         </p>
                         <a href="#" class="card-header-icon" aria-label="more options">
                             <span class="icon">
@@ -49,34 +93,28 @@
                     </header>
                     <div class="card-content">
                         <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                            <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                            <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                            <div class="columns is-mobile is-desktop">
+                                <div class="column is-one-third" style="background:${colVal[i][0]};">${colVal[i][0]}</div>
+                                <div class="column is-one-third" style="background:${colVal[i][1]};">${colVal[i][1]}</div>
+                                <div class="column is-one-third" style="background:${colVal[i][2]};">${colVal[i][2]}</div>
+                            </div>
+                            <div class="columns is-mobile is-desktop">
+                                <div class="column is-one-third" style="background:${colVal[i][3]};">${colVal[i][3]}</div>
+                                <div class="column is-one-third" style="background:${colVal[i][4]};">${colVal[i][4]}</div>
+                                <div class="column is-one-third" style="background:${colVal[i][5]};">${colVal[i][5]}</div>
+                            </div>
                         </div>
                     </div>
                     <footer class="card-footer">
                         <a href="#" class="card-footer-item">Save</a>
-                        <a href="#" class="card-footer-item">Edit</a>
                         <a href="#" class="card-footer-item">Delete</a>
                     </footer>
                 </div>
-            </div>
-        </div>
-    </div>
-</body>
-<script>
+            </div>`;
+        }
 
-    var colorData = JSON.parse(localStorage.colorFriend);
-    var colArr = colorData.colorPalette;
-    console.log(colArr);
-    var colName = [];
-    var colVal = [];
-    for (var i in colArr) {
-        colName.push(i);
-        colVal.push(colorData.colorPalette[i]);
     }
-    console.log(colName, colVal);
+
     // colorFriendData.colorPalette["color" + Date.now()] += finalData;
     // // localStorage.setItem("colorFriend", JSON.stringify(colorFriendData));
 </script>
