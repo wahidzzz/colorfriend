@@ -146,7 +146,6 @@ export default {
     // },
     likedPalette() {
       var finalData = JSON.parse(JSON.stringify(this.allColorValues));
-      console.log(finalData);
       fetch("https://api.ipify.org?format=json")
         .then((x) => x.json())
         .then(({ ip }) => {
@@ -156,8 +155,11 @@ export default {
               JSON.stringify({ userID: ip, colorPalette: {} })
             );
           }
+
           var colorFriendData = JSON.parse(localStorage.colorFriend);
-          colorFriendData.colorPalette["color" + Date.now()] += finalData;
+          var d=new Date();
+          var colorName="color" + d.getDate()+d.getMilliseconds();
+         typeof(colorFriendData.colorPalette)===undefined ? colorFriendData.colorPalette[colorName] += finalData:colorFriendData.colorPalette[colorName]=finalData;
           localStorage.setItem("colorFriend", JSON.stringify(colorFriendData));
         });
     },
