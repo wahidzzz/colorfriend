@@ -74,8 +74,7 @@
     var colVal = [];
     for (var i in colArr) {
         colName.push(i);
-        colVal.push(colorData[i]);
-        console.log(colVal)
+        colVal.push(colorData.colorPalette[i]);
     }
     console.log(colName, colVal);
     // colorFriendData.colorPalette["color" + Date.now()] += finalData;
