@@ -158,7 +158,7 @@ export default {
 
           var colorFriendData = JSON.parse(localStorage.colorFriend);
           var d=new Date();
-          var colorName="color" + d.getDate()+d.getMilliseconds();
+          var colorName="Friend" + d.getDate()+d.getMilliseconds();
          typeof(colorFriendData.colorPalette)===undefined ? colorFriendData.colorPalette[colorName] += finalData:colorFriendData.colorPalette[colorName]=finalData;
           localStorage.setItem("colorFriend", JSON.stringify(colorFriendData));
         });
