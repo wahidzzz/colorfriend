@@ -1,15 +1,17 @@
 <template>
   <div id="headerNav">
     <div id="logo">
+      <router-link to="/" >
       color
       <span>Friend</span>
+      </router-link>
     </div>
     <div id="navLinks">
       <div>
-       <a  href="./liked-palettes">Liked Palette</a>
+       <a><router-link to="liked-palettes" >Liked Palette</router-link></a>
       </div>
       <div>
-        <a  href="./how-it-works">How it works ?</a>
+        <a><router-link to="how-it-works" >How it works ?</router-link></a>
       </div>
       <div>
         <a  href="https://www.patreon.com/wahid_zzz" target="_blank">

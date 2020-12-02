@@ -32,10 +32,13 @@ export default {
     return {
       colorInputValue: "",
       id: "",
+      val:5,
     };
   },
+  props:["colorId"],
   created() {
-    this.id = this._uid - 6;
+
+    this.id = this.colorId;
     this.colorInputValue = this.allColorValues[this.id];
   },
   methods: {
@@ -50,12 +53,12 @@ export default {
   computed: {
     ...mapGetters(["allColorValues"]),
   },
-  watch: {
-    colorInputValue: function (newValue, oldValue) {
-      console.log(this.allColorValues[this.id]);
-      console.log("Something", newValue, oldValue);
-    },
-  },
+  // watch: {
+  //   colorInputValue: function (newValue, oldValue) {
+  //     console.log(this.allColorValues[this.id]);
+  //     console.log(newValue, oldValue);
+  //   },
+  // },
 };
 </script>
 <style scoped>

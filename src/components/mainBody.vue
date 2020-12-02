@@ -2,14 +2,14 @@
   <div id="#mainBody">
     <div class="row-sm">
       <div id="row" class="col-sm">
-        <colorItem />
-        <colorItem />
-        <colorItem />
+        <colorItem colorId="0" />
+        <colorItem colorId="1" />
+        <colorItem colorId="2" />
       </div>
       <div id="row" class="col-sm">
-        <colorItem />
-        <colorItem />
-        <colorItem />
+        <colorItem colorId="3" />
+        <colorItem colorId="4" />
+        <colorItem colorId="5" />
       </div>
     </div>
   </div>
