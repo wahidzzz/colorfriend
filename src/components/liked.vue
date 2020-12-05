@@ -1,8 +1,6 @@
 <template>
   <div id="liked">
-    <body>
-            <headerNav/>
-    </body>
+       <headerNav></headerNav>
   </div>
 </template>
 
