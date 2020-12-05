@@ -32,12 +32,10 @@ export default {
     return {
       colorInputValue: "",
       id: "",
-      val:5,
     };
   },
   props:["colorId"],
   created() {
-
     this.id = this.colorId;
     this.colorInputValue = this.allColorValues[this.id];
   },
@@ -76,8 +74,8 @@ export default {
   width: 3rem;
   cursor: pointer;
   border-radius: 2rem;
-  box-shadow: 0 -20px 15px -10px rgba(255, 255, 0, 0.3) inset,
-    0 20px 15px -10px rgba(255, 255, 0, 0.3) inset, 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -20px 15px -10px var(--accent-color) inset,
+    0 20px 15px -10px var(--accent-color) inset, 0 0 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 #colorCode {
@@ -85,6 +83,7 @@ export default {
   padding-left: 0.5rem;
   font-size: 1.5rem;
   color: var(--accent-color);
+  background-color: var(--light-color);
 }
 input[type="color"] {
   -webkit-appearance: none;

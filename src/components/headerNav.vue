@@ -48,10 +48,10 @@
     <nav class="navbar">
       <ul>
         <div>
-        <a class="menuLink"  href="./liked-palettes"><h3>Liked Palette</h3></a>
+        <a class="menuLink"><router-link to="liked-palettes" >Liked Palette</router-link></a>
         </div>
         <div>
-          <a  href="./how-it-works"><h3>How it works ?</h3></a>
+          <a class="menuLink"><router-link to="how-it-works" >How it works ?</router-link></a>
         </div>
         <div id="socialLinks">
           <div>
@@ -115,7 +115,7 @@ export default {
   background-color: var(--dark-color);
   padding: 2rem;
   height: 9%;
-  max-height: 9%;
+  max-height: 10%;
   width: 100vw;
   position: absolute;
   top: 0;

@@ -7,6 +7,17 @@
 <script>
 export default {
   name: "App",
+  created() {
+    fetch("https://api.ipify.org?format=json")
+        .then((x) => x.json())
+        .then(({ ip }) => {
+          if (localStorage.getItem("colorFriend") === null) {
+            localStorage.setItem(
+              "colorFriend",
+              JSON.stringify({ userID: ip, colorPalette: {} })
+            );
+          }});
+  }
 }
 </script>
 
@@ -23,6 +34,6 @@ export default {
   --dark-color: #142850;
   --extra-color: #32e0c4;
   font-family: "Poppins", sans-serif;
-  background-color: var(--light-color);
+  /* background-color: var(--light-color); */
 }
 </style>
