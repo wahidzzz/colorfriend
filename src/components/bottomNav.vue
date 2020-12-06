@@ -171,6 +171,7 @@ export default {
     onFileChange(e) {
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
+      this.fileName=this.url;
     },
     likedPalette() {
       var finalData = JSON.parse(JSON.stringify(this.allColorValues));
