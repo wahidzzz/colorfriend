@@ -1,13 +1,13 @@
 <template>
   <div id="liked">
-       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+       <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"> -->
        <headerNav></headerNav>
         <div id="likedBody">
             <h2 v-if="!this.rowNum" id="noLikeMsg">No Color Friends to Hangout with 😞, Heart your favorite Color Palettes 😃 </h2>
             <!-- <h4 v-for="row in this.rowNum" :key="row">{{row}}</h4> -->
-            <div class="columns" v-if="this.colArr">
+            <div class="columns is-multiline is-centered" v-if="this.colArr">
                 <div v-for="(value, name) in this.colArr" :key="name">
-                    <div class="column">
+                    <div class="column is-full">
                         <div class="card">
                         <header class="card-header">
                             <p class="card-header-title">
@@ -16,7 +16,7 @@
                         </header>
                         <div class="card-content">
                             <div class="content">
-                                <div class="columns is-mobile is-desktop">
+                                <div class="columns is-vccentered is-mobile is-desktop">
                                     <div class="column is-one-third" :style="[{ 'background-color':value[0]}]">{{value[0]}}</div>
                                     <div class="column is-one-third" :style="[{ 'background-color':value[1]}]">{{value[1]}}</div>
                                     <div class="column is-one-third" :style="[{ 'background-color':value[2]}]">{{value[2]}}</div>
@@ -66,6 +66,9 @@ export default {
 };
 </script>
 <style scoped>
+#navLinks a:hover,a:hover{
+    color:var(--accent-color);
+}
 #noLikeMsg{
     margin: .2em;
     padding:.2em;
@@ -81,9 +84,10 @@ export default {
 #likedBody{
     position: absolute;
     top:10vh;
-    height:90vh;
+    height:auto;
+    min-height:90vh;
     width: 100vw;
-     background-color: var(--light-color);
+    background-color: var(--light-color);
 }
 .card {
     background-color: var(--background-color);

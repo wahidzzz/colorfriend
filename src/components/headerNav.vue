@@ -117,6 +117,7 @@ export default {
   height: 9%;
   max-height: 10%;
   width: 100vw;
+  max-width:100%;
   position: absolute;
   top: 0;
 }
@@ -139,6 +140,10 @@ a{
   outline: none;
   border-bottom: 0.2rem solid transparent;
   transition: border 0.5s ease-in-out;
+}
+a:hover{
+  color: var(--accent-color);
+  cursor: pointer;
 }
 #navLinks div:hover,
 div:focus {
