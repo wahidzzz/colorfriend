@@ -1,12 +1,12 @@
 <template>
   <div id="#mainBody">
-    <div class="row-sm">
-      <div id="row" class="col-sm">
+    <div class="columns is-desktop is-mobile is-vcentered">
+      <div class="column is-half">
         <colorItem colorId="0" />
         <colorItem colorId="1" />
         <colorItem colorId="2" />
       </div>
-      <div id="row" class="col-sm">
+      <div class="column is-half">
         <colorItem colorId="3" />
         <colorItem colorId="4" />
         <colorItem colorId="5" />
@@ -36,9 +36,25 @@ export default {
 
 <style scoped>
 #mainBody {
+  min-height:80vh;
   height: 80%;
 }
-#row {
+.columns{
+  height: 80%;
+  position: absolute;
+  top: 9.8vh;
+  width: 100vw;
+  max-width:100%;
+  margin: 0;
+  padding: 0;
+}
+.column{
+  height: 100%;
+  max-height:100%;
+  margin: 0;
+  padding:0;
+}
+/* #row {
   display: flex;
 }
 #row:first-child {
@@ -50,7 +66,7 @@ export default {
     z-index:-1;
   }
   /* For mobile phones: */
-  #row {
+  /* #row { 
     margin-top: 10vh;
   }
   .row-sm {
@@ -63,5 +79,5 @@ export default {
     width: 100%;
     flex-direction: column;
   }
-}
+} */
 </style>

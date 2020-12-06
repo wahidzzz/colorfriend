@@ -39,7 +39,7 @@
             src="../assets/github.svg"
             alt="github"
             width="35"
-            title="contribute on gitub"
+            title="contribute on github"
           />
         </a>
       </div>
@@ -80,7 +80,7 @@
                 src="../assets/github.svg"
                 alt="github"
                 width="35"
-                title="contribute on gitub"
+                title="contribute on github"
               />
             </a>
           </div>
@@ -120,6 +120,7 @@ export default {
   max-width:100%;
   position: absolute;
   top: 0;
+  z-index:120;
 }
 #navLinks {
   position: absolute;

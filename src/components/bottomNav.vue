@@ -98,29 +98,27 @@
       </div>
       <div class="column">          
         <div class="field has-addons">
-          <p class="control has-icons-left">
-              <input class="input is-primary" type="text" placeholder="Name for Colors">
-              <span class="icon is-small is-left">
-                <i class="fas fa-lock"></i>
+          <figure class="image is-48x48">
+            <img v-if="url" :src="url" />
+          </figure>
+          <div class="file is-primary has-name is-right">
+            <label class="file-label">
+              <input class="file-input" type="file" @change="onFileChange" name="Image">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <!-- <span class="file-label"> 
+                  Choose a Image
+                </span> -->
               </span>
-            </p>
-            <div class="control is-expanded">
-              <div class="select is-fullwidth">
-                <select name="langSel" id="langSel" title="language options" v-model="selectedLang">
-                  <option value selected>Language</option>
-                  <option value="css">CSS</option>
-                  <option value="Less">less</option>
-                  <option value="python">Python</option>
-                  <option value="js">JS</option>
-                  <option value="plain">Plain Text</option>
-                </select>
-              </div>
-            </div>
+              <span class="file-name">
+               {{fileName}}
+              </span>
+            </label>
+          </div>
             <div class="control">
-              <button class="button is-primary is-outlined" id="copyWithLang" @click="copyWithLang" title="copy with language syntax">Copy</button>
-            </div>
-            <div class="control">
-              <button class="button is-primary is-outlined" id="downloadAsFile" @click="createPDF">Download</button>
+              <button class="button is-primary is-outlined" id="downloadAsFile" @click="createpalette">Make Palette</button>
             </div>
         </div>
       </div>
@@ -155,36 +153,24 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import { jsPDF } from "jspdf";
 export default {
   name: "bottomNav",
   data() {
     return {
       colorName: "",
       selectedLang: "",
+      fileName:"Choose file to make Palette",
+      url:"",
     };
   },
   methods: {
     ...mapActions(["setColors"]),
-    createPDF() {
-      var selectedLang = this.selectedLang == "" ? "plain" : this.selectedLang;
-      var saveColorName =
-        this.colorName == ""
-          ? "colorfriend-color-palette" + this.selectedLang
-          : "colorfriend-" + this.colorName + this.selectedLang;
-      console.log(selectedLang, saveColorName);
-      var doc = new jsPDF();
-      doc.setFont("poppins", "normal");
-      doc.text("colorfriend color-palette", 50, 20);
-      doc.text(saveColorName + "", 50, 40);
-      var y = 40;
-      this.allColorValues.forEach((color) => {
-        doc.text(color + "", 60, (y += 20));
-      });
-      doc.save("colorfriend-" + this.colorName + ".pdf");
+    createpalette() {
+        console.log("");
     },
-    copyWithLang() {
-      console.log("");
+    onFileChange(e) {
+      const file = e.target.files[0];
+      this.url = URL.createObjectURL(file);
     },
     likedPalette() {
       var finalData = JSON.parse(JSON.stringify(this.allColorValues));
@@ -235,6 +221,7 @@ export default {
   width: 100vw;
   max-width:100%;
   background-color: var(--dark-color);
+  z-index:120;
 }
 #heart,
 #heart svg,

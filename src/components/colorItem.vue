@@ -62,10 +62,10 @@ export default {
 <style scoped>
 #colorItem {
   position: relative;
-  width: 33.35%;
-  height: 40vh;
+  height: calc(80vh /3);
+  /* width: 33.35%;
   background: var(--accent-color);
-  border: 0.5rem solid #051433;
+  border: 0.5rem solid #051433; */
 }
 #colorSel {
   position: absolute;
@@ -83,7 +83,7 @@ export default {
   padding-left: 0.5rem;
   font-size: 1.5rem;
   color: var(--accent-color);
-  background-color: var(--light-color);
+  /* background-color: var(--light-color); */
 }
 input[type="color"] {
   -webkit-appearance: none;
