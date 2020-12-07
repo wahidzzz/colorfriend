@@ -89,10 +89,20 @@
               </div>
           </div>
           <div class="column">
-            <button class="button is-primary is-outlined" title="Get Previous random palette" @click="getPrev">Previous</button>
+            <button class="button is-primary is-outlined" title="Get Previous random palette" @click="getPrev">
+              <span class="icon is-small">
+                    <i class="fas fa-arrow-circle-left"></i>
+                  </span>
+                <span>Previous</span>
+            </button>
           </div>
           <div class="column">
-              <button class="button is-primary is-outlined" title="Generate random palettes" @click="setColors">Generate</button>
+              <button class="button is-primary is-outlined" title="Generate random palettes" @click="setColors">
+                  <span class="icon is-small">
+                    <i class="fas fa-sync-alt"></i>
+                  </span>
+                <span>Generate</span>
+                </button>
           </div>
         </div>
       </div>
@@ -101,22 +111,19 @@
           <figure class="image is-48x48">
             <img v-if="url" :src="url" />
           </figure>
-          <div class="file is-primary has-name is-right">
-            <label class="file-label">
-              <input class="file-input" type="file" @change="onFileChange" name="Image">
-              <span class="file-cta">
-                <span class="file-icon">
-                  <i class="fas fa-upload"></i>
+            <div class="file is-primary has-name">
+              <label class="file-label">  
+                <input class="file-input" type="file" @change="onFileChange" name="Image">
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
                 </span>
-                <!-- <span class="file-label"> 
-                  Choose a Image
-                </span> -->
-              </span>
-              <span class="file-name">
-               {{fileName}}
-              </span>
-            </label>
-          </div>
+                <span class="file-name">
+                {{fileName}}
+                </span>
+              </label>
+            </div>
             <div class="control">
               <button class="button is-primary is-outlined" id="downloadAsFile" @click="createpalette">Make Palette</button>
             </div>
@@ -159,7 +166,7 @@ export default {
     return {
       colorName: "",
       selectedLang: "",
-      fileName:"Choose file to make Palette",
+      fileName:"Select Image to",
       url:"",
     };
   },
@@ -253,6 +260,13 @@ input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
   color: var(--extra-color);
+}
+.file-name{
+  color:var(--extra-color)
+}
+.image img{
+  border-radius:8px;
+  max-height:45px;
 }
 
 /* form {
