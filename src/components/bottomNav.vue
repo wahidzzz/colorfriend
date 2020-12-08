@@ -109,7 +109,7 @@
       <div class="column">          
         <div class="field has-addons">
           <figure class="image is-48x48">
-            <img v-if="url" :src="url" />
+            <img ref="srcImg" v-if="url" :src="url" />
           </figure>
             <div class="file is-primary has-name">
               <label class="file-label">  
@@ -160,6 +160,9 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import ColorThief from "colorthief";
+import convert from "color-convert";
+
 export default {
   name: "bottomNav",
   data() {
@@ -173,7 +176,11 @@ export default {
   methods: {
     ...mapActions(["setColors"]),
     createpalette() {
-        console.log("");
+      const colorThief = new ColorThief()
+      const palette = colorThief.getPalette(this.$refs.srcImg,5)
+      console.log(palette);
+     console.log(convert.hex.rgb(palette));
+
     },
     onFileChange(e) {
       const file = e.target.files[0];
